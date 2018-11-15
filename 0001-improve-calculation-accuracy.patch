@@ -1,0 +1,58 @@
+From ddc945a0b8d136476fa77aeea9d0887c12d65ab1 Mon Sep 17 00:00:00 2001
+From: Sergii Piatakov <sergii.piatakov@globallogic.com>
+Date: Thu, 15 Nov 2018 15:21:34 +0200
+Subject: [PATCH] improve calculation accuracy
+
+Allow using float point arguments to avoid truncation.
+
+Test: Add (4.9, 4.9) should return 10.
+Signed-off-by: Sergii Piatakov <sergii.piatakov@globallogic.com>
+---
+ calculator.cpp | 4 ++--
+ calculator.h   | 5 +++++
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/calculator.cpp b/calculator.cpp
+index 4b4d22e..d62c5c6 100644
+--- a/calculator.cpp
++++ b/calculator.cpp
+@@ -1,11 +1,11 @@
+ #include "calculator.h"
+ 
+-int Calculator::Add (int a, int b)
++int Calculator::Add (double a, double b)
+ {
+ 	return a + b;
+ 
+ 
+-int Calculator::Sub (int a, int b)
++int Calculator::Sub (double a, double b)
+ {
+ 	return Add (a, -b);
+ }
+diff --git a/calculator.h b/calculator.h
+index bb37d31..54f5054 100644
+--- a/calculator.h
++++ b/calculator.h
+@@ -5,6 +5,7 @@ class Calculator
+ {
+ <<<<<<< HEAD
+     public:
++<<<<<<< HEAD
+         int Add (int, int);
+         int Sub (int, int);
+ =======
+@@ -12,6 +13,10 @@ class Calculator
+ 		int Add (double, double);
+ 		int Sub (double, double);
+ >>>>>>> cbcb06d (formatting: use tabs instead of spaces)
++=======
++        int Add (double, double);
++        int Sub (double, double);
++>>>>>>> 669f632 (improve calculation accuracy)
+ };
+ 
+ #endif//CALCULATOR_H
+-- 
+2.37.3.windows.1
+
